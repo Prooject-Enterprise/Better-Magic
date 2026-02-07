@@ -1,0 +1,126 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Weapon_Spellbook_Rekindle_Embers.name",
+    "Description": "server.items.Weapon_Spellbook_Rekindle_Emberss.description"
+  },
+  "Categories": [
+    "Items.Weapons"
+  ],
+  "Quality": "Rare",
+  "ItemLevel": 40,
+  "Recipe": {
+    "TimeSeconds": 5,
+    "Input": [
+      {
+        "ItemId": "Rock_Gem_Ruby",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Leather_Heavy",
+        "Quantity": 5
+      },
+      {
+        "ItemId": "Ingredient_Fire_Essence",
+        "Quantity": 20
+      },
+      {
+        "ItemId": "Ingredient_Fabric_Scrap_Cindercloth",
+        "Quantity": 20
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Arcanebench",
+        "Type": "Crafting",
+        "Categories": [
+          "Arcane_Grimoires"
+        ]
+      }
+    ],
+    "RequiredMemoriesLevel": 4
+  },
+  "Model": "NPC/Void/Necromancer_Void/Models/Weapons/Spellbook/Demon.blockymodel",
+  "Texture": "NPC/Void/Necromancer_Void/Models/Weapons/Spellbook/Demon_Texture.png",
+  "PlayerAnimationsId": "Spellbook",
+  "IconProperties": {
+    "Scale": 0.6,
+    "Translation": [
+      -10,
+      -10
+    ],
+    "Rotation": [
+      45,
+      90,
+      0
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Weapon_Spellbook_Demon.png",
+  "MaxStack": 1,
+  "Tags": {
+    "Type": [
+      "Weapon"
+    ],
+    "Family": [
+      "Staff"
+    ]
+  },
+  "Weapon": {},
+  "Interactions": {
+    "Primary": {
+      "Interactions": [
+        {
+          "Type": "Charging",
+          "Effects": {
+            "WorldSoundEventId": "SFX_Skeleton_Mage_Spellbook_Charge",
+            "ItemAnimationId": "CastHurlCharging"
+          },
+          "AllowIndefiniteHold": true,
+          "Next": {
+            "0.8": {
+              "Type": "RunOnBlockTypes",
+              "BlockSets": [
+                "Necromancy_Bones"
+              ],
+              "MaxCount": 5,
+              "Range": 5,
+              "Interactions": {
+                "Interactions": [
+                  {
+                    "Type": "Serial",
+                    "Interactions": [
+                      {
+                        "Type": "SpawnNPC",
+                        "EntityId": "Risen_Knight"
+                      },
+                      {
+                        "Type": "DestroyBlock"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "Next": {
+                "Type": "Simple",
+                "RunTime": 0.5,
+                "Effects": {
+                  "ItemAnimationId": "CastHurlCharged"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "RunTime": 0.2,
+          "Effects": {
+            "ItemAnimationId": "Interact"
+          }
+        }
+      ]
+    }
+  }
+}
